@@ -23,4 +23,7 @@ h5 {
     height: max-content !important;
     padding-bottom: 30px;
   }
+  .nav-wrapper {
+    font-size: 10px !important;
+  }
 }

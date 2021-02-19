@@ -6,34 +6,41 @@ const NavBar = () => {
   console.log(location);
   return (
     <div className='navbar-fixed'>
-      <nav>
-        <div className='nav-wrapper grey darken-4'>
+      <nav class='nav-wrapper'>
+        <div className='nav-wrapper blue-grey darken-3 '>
           <Link to='/'>
-            <span href='#' className='brand-logo center'>
+            <span
+              href='#'
+              className='brand-logo left'
+              style={{ marginLeft: "30px" }}
+            >
               Weather App
             </span>
           </Link>
-          <ul className='right hide-on-med-and-down'>
-            {useLocation().pathname === "/" && (
-              <li>
-                <a
-                  className='waves-effect waves-light btn modal-trigger'
-                  href='#modal1'
-                >
-                  <i className='material-icons'>search</i>
-                </a>
-              </li>
-            )}
-            <li>
-              <Link
-                to='about'
-                className='waves-effect waves-light btn modal-trigger'
-                href='#modal1'
-              >
-                <strong>About</strong>
-              </Link>
-            </li>
-          </ul>
+          <div class='nav-content'>
+            <ul className='right '>
+              {useLocation().pathname === "/about" ? (
+                <li>
+                  <Link
+                    to=''
+                    className='waves-effect waves-light btn modal-trigger'
+                  >
+                    <strong>Back</strong>
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  {" "}
+                  <Link
+                    to='about'
+                    className='waves-effect waves-light btn modal-trigger'
+                  >
+                    <strong>About</strong>
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

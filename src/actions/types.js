@@ -1,3 +1,4 @@
 export const GET_WEATHER = "GET_WEATHER";
 export const SEARCH_INPUT = "SEARCH_INPUT";
 export const SET_BACKGROUND = "SET_BACKGROUND";
+export const FORECAST_WEATHER = "FORECAST_WEATHER";

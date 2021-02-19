@@ -1,7 +1,13 @@
-import { GET_WEATHER, SEARCH_INPUT, SET_BACKGROUND } from "../actions/types";
+import {
+  GET_WEATHER,
+  SEARCH_INPUT,
+  SET_BACKGROUND,
+  FORECAST_WEATHER,
+} from "../actions/types";
 
 const initalState = {
   currentWeather: null,
+  forecastWeather: null,
   searchCity: null,
   background: "",
   loading: false,
@@ -15,6 +21,12 @@ export default (state = initalState, action) => {
         ...state,
         currentWeather: action.payload,
         loading: false,
+      };
+    case FORECAST_WEATHER:
+      return {
+        ...state,
+        forecastWeather: action.payload,
+        loading: true,
       };
     case SET_BACKGROUND:
       return {

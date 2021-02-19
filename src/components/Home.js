@@ -3,19 +3,38 @@ import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { getBackGround } from "../utils/getBackground";
 import { connect } from "react-redux";
-import { getWeather, setBackGround } from "../actions/weatherActions";
+import ForecastItem from "./ForecastItem";
+import { v4 as uuidv4 } from "uuid";
+import PreLoader from "./PreLoader";
 
-const Home = ({ background, currentWeather, getWeather, setBackGround }) => {
+import {
+  getWeather,
+  setBackGround,
+  getForecastWeather,
+} from "../actions/weatherActions";
+
+const Home = ({
+  background,
+  currentWeather,
+  getWeather,
+  setBackGround,
+  getForecastWeather,
+  foreCastWeather,
+}) => {
   useEffect(() => {
     getWeather();
+    getForecastWeather();
   }, []);
 
   useEffect(() => {
     setBackGround(getBackGround(currentWeather?.weather[0].main));
   }, [currentWeather]);
 
+  console.log(foreCastWeather);
+
   return (
     <>
+      <PreLoader />
       <div
         className='row '
         style={{
@@ -41,7 +60,9 @@ const Home = ({ background, currentWeather, getWeather, setBackGround }) => {
           <div style={{ zIndex: 10 }}>
             <span class='card-title'>
               <strong>
-                <h1>{currentWeather?.name}</h1>
+                <h1>
+                  {currentWeather?.name} {currentWeather?.sys.country}
+                </h1>
               </strong>
             </span>
             <p>
@@ -65,29 +86,25 @@ const Home = ({ background, currentWeather, getWeather, setBackGround }) => {
       <div className='section'></div>
       <div className='divider'></div>
       <div className='section'></div>
+      <div class='fixed-action-btn'>
+        <a
+          class='btn-floating btn-large blue-grey darken-3 waves-effect waves-light btn modal-trigger'
+          href='#modal1'
+        >
+          <i className='material-icons'>search</i>
+        </a>
+      </div>
 
       <ul class='collection'>
-        <li class='collection-item avatar blue-grey darken-1 white-text '>
-          <img
-            src={`http://openweathermap.org/img/wn/${currentWeather?.weather[0].icon}@4x.png`}
-            alt=''
-            class='circle'
-            style={{ backgroundColor: "gray" }}
-          />
-          <span class='title '>Title</span>
-          <p>
-            First Line <br /> Second Line
-          </p>
-
-          <a href='#!' class='secondary-content'>
-            <i class='material-icons'>grade</i>
-          </a>
-        </li>
+        {foreCastWeather &&
+          foreCastWeather.map((item) => (
+            <ForecastItem key={uuidv4()} item={item} />
+          ))}
       </ul>
 
-      <a className='waves-effect waves-light btn modal-trigger' href='#modal1'>
+      {/* <a className='waves-effect waves-light btn modal-trigger' href='#modal1'>
         <i className='material-icons'>search</i>
-      </a>
+      </a> */}
 
       {/* <!-- Modal Structure --> */}
     </>
@@ -104,8 +121,13 @@ const style = {
 };
 
 const mapStateToProps = (state) => ({
-  currentWeather: state.weather.currentWeather,
+  currentWeather: state.weather?.currentWeather,
+  foreCastWeather: state.weather.forecastWeather?.list,
   background: state.weather.background,
 });
 
-export default connect(mapStateToProps, { getWeather, setBackGround })(Home);
+export default connect(mapStateToProps, {
+  getWeather,
+  setBackGround,
+  getForecastWeather,
+})(Home);
