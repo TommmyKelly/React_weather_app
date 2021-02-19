@@ -1,33 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { getBackGround } from "../utils/getBackground";
+import { connect } from "react-redux";
+import { getWeather, setBackGround } from "../actions/weatherActions";
 
-const Home = () => {
-  const [currentWeather, setCurrentWeather] = useState(null);
-  const [backGround, setBackGround] = useState("");
-  const inputRef = useRef(null);
-
-  const getWeather = async (loc = "Gowran") => {
-    try {
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=a8e71c9932b20c4ceb0aed183e6a83bb&units=metric`
-      );
-
-      setCurrentWeather(res.data);
-      setBackGround(getBackGround(res.data.weather[0].main));
-      M.toast({ html: `Updated for ${loc}` });
-      inputRef.current.value = "";
-    } catch (error) {
-      console.log(error.message);
-      M.toast({ html: `Incorrect input. Nothing found for ${loc}` });
-    }
-  };
-
+const Home = ({ background, currentWeather, getWeather, setBackGround }) => {
   useEffect(() => {
     getWeather();
   }, []);
+
+  useEffect(() => {
+    setBackGround(getBackGround(currentWeather?.weather[0].main));
+  }, [currentWeather]);
 
   return (
     <>
@@ -35,7 +20,7 @@ const Home = () => {
         className='row '
         style={{
           marginTop: "30px",
-          backgroundImage: `${backGround}`,
+          backgroundImage: `${background}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center ,center",
           backgroundSize: "cover",
@@ -100,29 +85,11 @@ const Home = () => {
         </li>
       </ul>
 
+      <a className='waves-effect waves-light btn modal-trigger' href='#modal1'>
+        <i className='material-icons'>search</i>
+      </a>
+
       {/* <!-- Modal Structure --> */}
-      <div id='modal1' class='modal'>
-        <div class='modal-content'>
-          <h4>Modal Header</h4>
-          <input
-            ref={inputRef}
-            type='text'
-            placeholder='Search...'
-            style={{ color: "gray", fontWeight: "bold" }}
-            ref={inputRef}
-          />
-        </div>
-        <div class='modal-footer'>
-          <a
-            href='#!'
-            class='modal-close waves-effect waves-green btn-flat'
-            onClick={() => getWeather(inputRef.current.value)}
-            style={modaButton}
-          >
-            Search
-          </a>
-        </div>
-      </div>
     </>
   );
 };
@@ -141,4 +108,9 @@ const modaButton = {
   color: "white",
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  currentWeather: state.weather.currentWeather,
+  background: state.weather.background,
+});
+
+export default connect(mapStateToProps, { getWeather, setBackGround })(Home);
