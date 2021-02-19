@@ -1,4 +1,5 @@
 import { GET_WEATHER, SET_BACKGROUND } from "./types";
+import M from "materialize-css/dist/js/materialize.min.js";
 import axios from "axios";
 
 export const getWeather = (loc = "Gowran") => async (dispatch) => {
@@ -8,9 +9,9 @@ export const getWeather = (loc = "Gowran") => async (dispatch) => {
     );
     dispatch({ type: GET_WEATHER, payload: res.data });
     //setBackGround(getBackGround(res.data.weather[0].main));
-    //M.toast({ html: `Updated for ${loc}` });
+    M.toast({ html: `Updated for ${loc}` });
   } catch (error) {
-    // M.toast({ html: `Incorrect input. Nothing found for ${loc}` });
+    M.toast({ html: `Incorrect input. Nothing found for ${loc}` });
   }
 };
 
