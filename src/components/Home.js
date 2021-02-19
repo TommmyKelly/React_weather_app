@@ -103,11 +103,6 @@ const style = {
   alignItems: "center",
 };
 
-const modaButton = {
-  backgroundColor: "#26A69A",
-  color: "white",
-};
-
 const mapStateToProps = (state) => ({
   currentWeather: state.weather.currentWeather,
   background: state.weather.background,

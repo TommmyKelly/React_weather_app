@@ -14,14 +14,16 @@ const NavBar = () => {
             </span>
           </Link>
           <ul className='right hide-on-med-and-down'>
-            <li>
-              <a
-                className='waves-effect waves-light btn modal-trigger'
-                href='#modal1'
-              >
-                <i className='material-icons'>search</i>
-              </a>
-            </li>
+            {useLocation().pathname === "/" && (
+              <li>
+                <a
+                  className='waves-effect waves-light btn modal-trigger'
+                  href='#modal1'
+                >
+                  <i className='material-icons'>search</i>
+                </a>
+              </li>
+            )}
             <li>
               <Link
                 to='about'
