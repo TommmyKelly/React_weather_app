@@ -6,15 +6,17 @@ const SearchModal = ({ getWeather, getForecastWeather }) => {
   const inputRef = useRef(null);
 
   const updateWeather = () => {
+    if (inputRef.current.value === "") return;
     getWeather(inputRef.current.value);
     getForecastWeather(inputRef.current.value);
+    inputRef.current.value = "";
   };
 
   return (
     <div>
       {/* <!-- Modal Structure --> */}
       <div id='modal1' class='modal'>
-        <div class='modal-content'>
+        <div className='modal-content'>
           <h4>Loacation Search</h4>
           <input
             ref={inputRef}
@@ -23,10 +25,10 @@ const SearchModal = ({ getWeather, getForecastWeather }) => {
             style={{ color: "gray", fontWeight: "bold" }}
           />
         </div>
-        <div class='modal-footer'>
+        <div className='modal-footer'>
           <a
             href='#!'
-            class='modal-close waves-effect waves-green btn-flat'
+            className='modal-close waves-effect waves-green btn-flat'
             onClick={updateWeather}
             style={modaButton}
           >

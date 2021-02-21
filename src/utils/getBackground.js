@@ -8,7 +8,7 @@ export const getBackGround = (con) => {
       break;
     case "Clear":
       URL =
-        'url("https://images.unsplash.com/photo-1567787782997-319ae6cf2edc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTJ8fGNsZWFyJTIwd2VhdGhlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")';
+        'url("https://images.unsplash.com/photo-1607280719353-3272826b21cc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fGNsZWFyJTIwc2t5fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")';
 
       break;
     case "Snow":

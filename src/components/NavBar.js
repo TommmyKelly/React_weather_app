@@ -2,11 +2,9 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const location = useLocation();
-  console.log(location);
   return (
     <div className='navbar-fixed'>
-      <nav class='nav-wrapper'>
+      <nav className='nav-wrapper'>
         <div className='nav-wrapper blue-grey darken-3 '>
           <Link to='/'>
             <span
@@ -17,7 +15,7 @@ const NavBar = () => {
               Weather App
             </span>
           </Link>
-          <div class='nav-content'>
+          <div className='nav-content'>
             <ul className='right '>
               {useLocation().pathname === "/about" ? (
                 <li>

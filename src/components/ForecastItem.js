@@ -3,19 +3,20 @@ import moment from "moment";
 
 const ForecastItem = ({ item }) => {
   return (
-    <li class='collection-item avatar blue-grey darken-1 white-text '>
+    <li className='collection-item avatar blue-grey darken-1 white-text center'>
       <img
         src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png`}
         alt=''
-        class='circle'
+        className='circle'
         style={{ backgroundColor: "gray" }}
       />
-      <span class='title '>
+      <span className='title '>
         {moment(item.dt * 1000).format("MMMM Do YYYY, h:mm a")}
       </span>
       <p>
         {item.weather[0].main}: {item.weather[0].description} <br /> Temp:{" "}
-        {item.main.temp} °C / Feels Like {item.main.feels_like} °C
+        {item.main.temp} °C / Feels Like {item.main.feels_like} °C <br /> Wind:{" "}
+        {(item.wind.speed * 2.23694).toFixed(2)} MPH
       </p>
 
       {/* <a href='#!' class='secondary-content'>

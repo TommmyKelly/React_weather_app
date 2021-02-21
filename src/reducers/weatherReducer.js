@@ -3,6 +3,8 @@ import {
   SEARCH_INPUT,
   SET_BACKGROUND,
   FORECAST_WEATHER,
+  SET_LOADING,
+  NOT_FOUND,
 } from "../actions/types";
 
 const initalState = {
@@ -26,12 +28,21 @@ export default (state = initalState, action) => {
       return {
         ...state,
         forecastWeather: action.payload,
-        loading: true,
+        loading: false,
       };
     case SET_BACKGROUND:
       return {
         ...state,
         background: action.payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case NOT_FOUND:
+      return {
+        ...state,
         loading: false,
       };
     default:
