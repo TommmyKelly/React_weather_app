@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import { getBackGround } from "../utils/getBackground";
 import { connect } from "react-redux";

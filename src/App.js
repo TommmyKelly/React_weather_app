@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./pages/About";
 import SearchModal from "./components/SearchModal";
+import ScrollButton from "./components/ScrollButton";
 
 function App() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
       <div className='App '>
         <SearchModal />
         <NavBar />
+        <ScrollButton />
         <Switch>
           <div className='container'>
             <Route exact path='/' component={Home} />

@@ -32,6 +32,26 @@
   z-index: 1;
 }
 
+.fixed-action-btn.left {
+  left: 23px;
+}
+
+.fixed-action-btn.left.hide {
+  left: 23px;
+}
+
+.show {
+  opacity: 1;
+
+  transition: opacity 0.3s ease-in;
+}
+
+.hidden {
+  opacity: 0;
+
+  transition: opacity 0.3s ease-in;
+}
+
 h1,
 h2,
 h3,
