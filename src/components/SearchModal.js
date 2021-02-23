@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
-import { getWeather, getForecastWeather } from "../actions/weatherActions";
+import { getWeather } from "../actions/weatherActions";
 
-const SearchModal = ({ getWeather, getForecastWeather }) => {
+const SearchModal = ({ getWeather }) => {
   const inputRef = useRef(null);
 
   const updateWeather = () => {
     if (inputRef.current.value === "") return;
     getWeather(inputRef.current.value);
-    getForecastWeather(inputRef.current.value);
+
     inputRef.current.value = "";
   };
 
@@ -17,7 +17,7 @@ const SearchModal = ({ getWeather, getForecastWeather }) => {
       {/* <!-- Modal Structure --> */}
       <div id='modal1' class='modal'>
         <div className='modal-content'>
-          <h4>Loacation Search</h4>
+          <h4>Location Search</h4>
           <input
             ref={inputRef}
             type='text'
@@ -45,4 +45,4 @@ const modaButton = {
   color: "white",
 };
 
-export default connect(null, { getWeather, getForecastWeather })(SearchModal);
+export default connect(null, { getWeather })(SearchModal);

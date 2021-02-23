@@ -1,8 +1,6 @@
 import {
   GET_WEATHER,
-  SEARCH_INPUT,
   SET_BACKGROUND,
-  FORECAST_WEATHER,
   SET_LOADING,
   NOT_FOUND,
 } from "../actions/types";
@@ -21,15 +19,11 @@ export default (state = initalState, action) => {
     case GET_WEATHER:
       return {
         ...state,
-        currentWeather: action.payload,
+        currentWeather: action.payload[0].data,
+        forecastWeather: action.payload[1].data,
         loading: false,
       };
-    case FORECAST_WEATHER:
-      return {
-        ...state,
-        forecastWeather: action.payload,
-        loading: false,
-      };
+
     case SET_BACKGROUND:
       return {
         ...state,

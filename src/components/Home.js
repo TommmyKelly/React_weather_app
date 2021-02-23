@@ -7,29 +7,24 @@ import { v4 as uuidv4 } from "uuid";
 import PreLoader from "./PreLoader";
 import moment from "moment";
 
-import {
-  getWeather,
-  setBackGround,
-  getForecastWeather,
-} from "../actions/weatherActions";
+import { getWeather, setBackGround } from "../actions/weatherActions";
 
 const Home = ({
   background,
   currentWeather,
   getWeather,
   setBackGround,
-  getForecastWeather,
   foreCastWeather,
   loading,
-  setLoading,
 }) => {
   useEffect(() => {
     getWeather();
-    getForecastWeather();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     setBackGround(getBackGround(currentWeather?.weather[0].main));
+    // eslint-disable-next-line
   }, [currentWeather]);
 
   return (
@@ -114,17 +109,6 @@ const Home = ({
                     </h4>
                   </strong>
                 </p>
-                {/* <p>
-                  <strong>
-                    <h4>
-                      Current Time:{" "}
-                      {moment(
-                        currentWeather?.dt * 1000 +
-                          currentWeather?.timezone * 1000
-                      ).format("h:mm a")}{" "}
-                    </h4>
-                  </strong>
-                </p> */}
               </div>
             </div>
           </div>
@@ -147,12 +131,6 @@ const Home = ({
                 .slice(0, 10)
                 .map((item) => <ForecastItem key={uuidv4()} item={item} />)}
           </ul>
-
-          {/* <a className='waves-effect waves-light btn modal-trigger' href='#modal1'>
-        <i className='material-icons'>search</i>
-      </a> */}
-
-          {/* <!-- Modal Structure --> */}
         </>
       )}
     </>
@@ -178,5 +156,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getWeather,
   setBackGround,
-  getForecastWeather,
 })(Home);
