@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { getWeather } from "../actions/weatherActions";
+import PropTypes from "prop-types";
 
 const SearchModal = ({ getWeather }) => {
   const inputRef = useRef(null);
@@ -15,7 +16,7 @@ const SearchModal = ({ getWeather }) => {
   return (
     <div>
       {/* <!-- Modal Structure --> */}
-      <div id='modal1' class='modal'>
+      <div id='modal1' className='modal'>
         <div className='modal-content'>
           <h4>Location Search</h4>
           <input
@@ -38,6 +39,10 @@ const SearchModal = ({ getWeather }) => {
       </div>
     </div>
   );
+};
+
+SearchModal.propTyes = {
+  getWeather: PropTypes.func.isRequired,
 };
 
 const modaButton = {

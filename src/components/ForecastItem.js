@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 const ForecastItem = ({ item }) => {
   return (
@@ -24,6 +25,10 @@ const ForecastItem = ({ item }) => {
       </a> */}
     </li>
   );
+};
+
+ForecastItem.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default ForecastItem;

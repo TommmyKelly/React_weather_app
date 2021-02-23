@@ -6,6 +6,7 @@ import ForecastItem from "./ForecastItem";
 import { v4 as uuidv4 } from "uuid";
 import PreLoader from "./PreLoader";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 import { getWeather, setBackGround } from "../actions/weatherActions";
 
@@ -135,6 +136,15 @@ const Home = ({
       )}
     </>
   );
+};
+
+Home.propTypes = {
+  currentWeather: PropTypes.object.isRequired,
+  foreCastWeather: PropTypes.array.isRequired,
+  background: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  getWeather: PropTypes.func.isRequired,
+  setBackGround: PropTypes.func.isRequired,
 };
 
 const style = {
