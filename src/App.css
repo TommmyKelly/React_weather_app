@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
 /* .banner {
   text-shadow: rgb(18, 21, 23) 3px 0px 0px,
     rgb(18, 21, 23) 2.83487px 0.981584px 0px,
