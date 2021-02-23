@@ -2,7 +2,7 @@ import { GET_WEATHER, SET_BACKGROUND, SET_LOADING, NOT_FOUND } from "./types";
 import M from "materialize-css/dist/js/materialize.min.js";
 import axios from "axios";
 
-export const getWeather = (loc = "Gowran") => async (dispatch) => {
+export const getWeather = (loc = "New York") => async (dispatch) => {
   try {
     dispatch({ type: SET_LOADING, payload: null });
     const res = await Promise.all([
