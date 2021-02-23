@@ -4,10 +4,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 //const publicPath = path.join(__dirname, "..", "public");
 
-app.use(express.static("public"));
+app.use(express.static("build"));
 
 app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "public", "index.html"))
+  res.sendFile(path.resolve(__dirname, "build", "index.html"))
 );
 
 app.listen(port, () => {
