@@ -12,6 +12,7 @@ const initalState = {
   background: "",
   loading: false,
   error: null,
+  initialSearch: true,
 };
 // eslint-disable-next-line
 export default (state = initalState, action) => {
@@ -22,6 +23,7 @@ export default (state = initalState, action) => {
         currentWeather: action.payload[0].data,
         forecastWeather: action.payload[1].data,
         loading: false,
+        initialSearch: false,
       };
 
     case SET_BACKGROUND:
@@ -34,6 +36,7 @@ export default (state = initalState, action) => {
         ...state,
         loading: true,
       };
+
     case NOT_FOUND:
       return {
         ...state,

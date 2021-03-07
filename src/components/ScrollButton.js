@@ -25,6 +25,7 @@ const ScrollButton = () => {
       }
       onClick={onClick}
     >
+      {/* // eslint-disable-next-line */}
       <a className='btn-floating btn-large blue-grey darken-3 waves-effect waves-light btn '>
         <i className='material-icons'>expand_less</i>
       </a>

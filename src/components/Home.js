@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import { getBackGround } from "../utils/getBackground";
 import { connect } from "react-redux";
@@ -17,9 +17,13 @@ const Home = ({
   setBackGround,
   foreCastWeather,
   loading,
+  initialSearch,
 }) => {
   useEffect(() => {
-    getWeather();
+    if (initialSearch) {
+      getWeather();
+    }
+
     // eslint-disable-next-line
   }, []);
 
@@ -161,6 +165,7 @@ const mapStateToProps = (state) => ({
   foreCastWeather: state.weather.forecastWeather?.list,
   background: state.weather.background,
   loading: state.weather.loading,
+  initialSearch: state.weather.initialSearch,
 });
 
 export default connect(mapStateToProps, {
