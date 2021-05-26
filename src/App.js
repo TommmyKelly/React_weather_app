@@ -8,8 +8,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./pages/About";
 import SearchModal from "./components/SearchModal";
 import ScrollButton from "./components/ScrollButton";
+import smoothscroll from "smoothscroll-polyfill";
 
 function App() {
+  smoothscroll.polyfill();
   useEffect(() => {
     //initalise materailise
     M.AutoInit();
